@@ -2,4 +2,13 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+local bufferline = require 'bufferline'
+return {
+  bufferline.setup {
+    options = {
+      mode = 'buffers',
+      style_preset = bufferline.style_preset.minimal,
+      indicator = { style = 'icon' },
+    },
+  },
+}

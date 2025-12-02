@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 local bufferline = require 'bufferline'
+
 return {
   bufferline.setup {
     options = {

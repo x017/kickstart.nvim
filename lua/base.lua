@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
+vim.opt.cursorline = false
 vim.o.number = true
 -- vim.o.relativenumber = true
 
@@ -13,7 +14,7 @@ vim.o.showmode = false
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
-
+vim.opt.cursorcolumn = false
 vim.o.breakindent = true
 
 vim.o.undofile = true
@@ -60,3 +61,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 local lazy = require 'kickstart.lazy'
+
+-- Disable current buffer highlight
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    vim.opt.cursorline = false
+  end,
+})
+
+vim.opt.tabstop = 4 -- Number of visual spaces per TAB
+vim.opt.shiftwidth = 4 -- Spaces for indentation
+vim.opt.softtabstop = 4 -- Backspace/Delete behaves like 4 spaces
+vim.opt.expandtab = true -- Use spaces instead of tabs

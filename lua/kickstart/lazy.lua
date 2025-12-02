@@ -430,17 +430,6 @@ require('lazy').setup({
 
   {
     'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      require('tokyonight').setup {
-        transparency = true,
-        styles = {
-          comments = { italic = true },
-        },
-      }
-
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
   },
 
   { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },

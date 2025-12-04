@@ -62,3 +62,6 @@ map('n', '<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer (buffe
 map('n', '<leader>wk', function()
   vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')
 end, { desc = 'whichkey query lookup' })
+
+map('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
+map('n', '<leader>x', '<cmd>bdelete<CR>', { desc = 'Close current buffer' })

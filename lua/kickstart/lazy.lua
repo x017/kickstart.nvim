@@ -443,6 +443,41 @@ require('lazy').setup({
   },
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'x017/furusato.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.setup = {
+        transparent = true,
+        italic_comments = true,
+        italic_keywords = true,
+        italic_functions = true,
+        italic_variables = false,
+      }
+      vim.cmd 'colorscheme furusato'
+    end,
+  },
+  -- lazydocker.nvim
+  {
+    'mgierada/lazydocker.nvim',
+    dependencies = { 'akinsho/toggleterm.nvim' },
+    config = function()
+      require('lazydocker').setup {
+        border = 'curved', -- valid options are "single" | "double" | "shadow" | "curved"
+      }
+    end,
+    event = 'BufRead',
+    keys = {
+      {
+        '<leader>ld',
+        function()
+          require('lazydocker').open()
+        end,
+        desc = 'Open Lazydocker floating window',
+      },
+    },
+  },
 
   {
     'echasnovski/mini.nvim',

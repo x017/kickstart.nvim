@@ -10,6 +10,7 @@ vim.o.number = true
 
 vim.o.mouse = 'a'
 
+vim.opt.fillchars = { eob = ' ' }
 vim.o.showmode = false
 
 vim.schedule(function()

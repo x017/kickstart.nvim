@@ -48,6 +48,7 @@ map('n', '<leader>pt', '<cmd>Telescope terms<CR>', { desc = 'telescope pick hidd
 
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'telescope find files' })
 map('n', '<leader>fa', '<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>', { desc = 'telescope find all files' })
+map('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = 'LazyGit' })
 
 -- terminal
 map('t', '<C-x>', '<C-\\><C-N>', { desc = 'terminal escape terminal mode' })
@@ -65,3 +66,4 @@ end, { desc = 'whichkey query lookup' })
 
 map('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 map('n', '<leader>x', '<cmd>bdelete<CR>', { desc = 'Close current buffer' })
+map('n', '<leader>p', ':Pomodoro<CR>', { desc = 'Pomodoro' })

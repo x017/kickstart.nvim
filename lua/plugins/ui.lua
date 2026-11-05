@@ -36,13 +36,21 @@ return {
       options = {
         mode = 'buffers',
         numbers = 'buffer_id',
-        separator_style = 'slope',
-        indicator = { style = 'underline' },
+        -- solid bar look: always visible, filled background, chunky separators
+        always_show = true,
+        separator_style = 'padded_slant',
+        indicator = { style = 'none' },
         diagnostics = 'nvim_lsp',
         hover = { enabled = true, reveal = { 'close' } },
         offsets = {
           { filetype = 'neo-tree', text = '  File Explorer', text_align = 'center' },
         },
+      },
+      highlights = {
+        fill = { bg = '#0f1114' }, -- the bar itself
+        background = { bg = '#0f1114' },
+        separator = { fg = '#0f1114', bg = '#0f1114' },
+        buffer_selected = { bg = '#1e2025', bold = true },
       },
     },
   },
@@ -56,7 +64,7 @@ return {
         theme = 'auto',
         section_separators = { left = '', right = '' },
         component_separators = { left = '│', right = '│' },
-        disabled_filetypes = { statusline = { 'dashboard' } },
+        disabled_filetypes = { statusline = { 'neo-tree' } },
       },
       sections = {
         lualine_a = { 'mode' },

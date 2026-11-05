@@ -16,7 +16,7 @@ lua/
     completion.lua        nvim-cmp async autocompletion
     telescope.lua         fuzzy finder
     terminal.lua            toggleterm: floating + split terminals
-    ui.lua                  dashboard, bufferline, lualine, which-key, neo-tree
+    ui.lua                  bufferline (solid bar), lualine, which-key, neo-tree
     editor.lua              treesitter, autopairs, comments, conform, lint, flash
     git.lua               gitsigns, lazygit, lazydocker
     extras.lua            misc plugins

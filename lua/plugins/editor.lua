@@ -10,16 +10,24 @@ return {
     -- ships lua/nvim-treesitter/configs.lua
     branch = 'master',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'vim', 'vimdoc' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
+    config = function()
+      -- fail-safe: never hard-crash startup if the clone is missing/stale
+      -- (run :Lazy sync to fix a stale clone)
+      local ok, configs = pcall(require, 'nvim-treesitter.configs')
+      if not ok then
+        vim.notify('nvim-treesitter not loaded — run :Lazy sync (or delete ~/.local/share/nvim/lazy/nvim-treesitter)', vim.log.levels.WARN)
+        return
+      end
+      configs.setup {
+        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'vim', 'vimdoc' },
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'ruby' },
+        },
+        indent = { enable = true, disable = { 'ruby' } },
+      }
+    end,
   },
 
   -- ── Auto pairs ─────────────────────────────────────

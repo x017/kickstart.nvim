@@ -14,7 +14,7 @@ vim.o.cursorline = false -- keep the buffer highlight disabled (was a VimEnter a
 vim.o.mouse = 'a'
 vim.o.showmode = false
 vim.o.signcolumn = 'yes'
-vim.o.fillchars = { eob = ' ' }
+vim.opt.fillchars = { eob = ' ' }
 vim.o.breakindent = true
 vim.o.scrolloff = 10
 

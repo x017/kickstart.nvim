@@ -1,7 +1,6 @@
 -- lua/plugins/completion.lua
--- Autocompletion with nvim-cmp.
--- nvim-cmp queries its sources asynchronously: LSP/buffer/path results are
--- fetched in the background and never block the editor while you type.
+-- Autocompletion with nvim-cmp (async by design: sources are queried in the
+-- background and never block typing). Tuned to feel instant, not bloated.
 
 return {
   {
@@ -35,21 +34,22 @@ return {
           end,
         },
 
-        -- async-friendly performance tuning
+        -- snappy async tuning: query often but cheaply, bail on slow sources
         performance = {
-          debounce = 60, -- ms to wait before re-querying sources
-          throttle = 30, -- ms minimum between source queries
-          fetching_timeout = 500, -- give up on a slow source after 500ms
-          max_view_entries = 30,
+          debounce = 30, -- ms before re-querying after you stop typing
+          throttle = 20, -- min ms between queries
+          fetching_timeout = 150, -- drop a source that takes longer than this
+          max_view_entries = 8, -- short menu = less to render
         },
 
         completion = {
           completeopt = 'menu,menuone,noinsert',
         },
+        preselect = cmp.PreselectMode.None, -- nothing auto-selected
 
         window = {
           completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          documentation = false, -- no doc popup while typing (less bloat)
         },
 
         mapping = cmp.mapping.preset.insert {
@@ -77,11 +77,11 @@ return {
           end, { 'i', 's' }),
         },
 
+        -- few, fast sources — LSP + current buffer first, path as fallback
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-        }, {
           { name = 'buffer' },
+        }, {
           { name = 'path' },
         }),
       }

@@ -1,19 +1,17 @@
 -- lua/plugins/ui.lua
--- Interface plugins: dashboard (ASCII art header), bufferline, lualine,
+-- Interface plugins: dashboard, bufferline, lualine,
 -- which-key, indent guides, todo highlights, mini.nvim, neo-tree.
 
 return {
-  -- ── Dashboard with random ASCII art header ────────
+  -- ── Dashboard ──────────────────────────────────────
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = function()
-      local ascii = require 'config.ascii'
-      return {
-        theme = 'doom',
-        config = {
-          header = ascii.random(),
+    opts = {
+      theme = 'doom',
+      config = {
+        header = { '', '  NVIM  ', '' },
           center = {
             { icon = '  ', desc = 'New file', key = 'e', action = 'enew' },
             { icon = '  ', desc = 'Find file', key = 'f', action = 'Telescope find_files' },
@@ -22,9 +20,8 @@ return {
             { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
           },
           footer = { '', '⚡ kickstart.nvim — ready to code' },
-        },
-      }
-    end,
+      },
+    },
   },
 
   -- ── Buffer tabs ────────────────────────────────────

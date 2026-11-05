@@ -8,8 +8,7 @@ lua/
   config/
     options.lua           all vim options
     keymaps.lua           all global keymaps (grouped by category)
-    autocmds.lua          global autocmds
-    ascii.lua             ASCII art collection (:AsciiArt, dashboard header)
+    autocmds.lua          global autocmds + winbar breadcrumbs
     lazy.lua              lazy.nvim bootstrap (loads lua/plugins/*)
   plugins/
     theme.lua             colorschemes

@@ -93,6 +93,11 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- Breadcrumbs: show current function/class in the winbar
+          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentSymbol, event.buf) then
+            require('nvim-navic').attach(client, event.buf)
+          end
         end,
       })
 

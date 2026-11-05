@@ -6,6 +6,9 @@ return {
   -- ── Syntax highlighting ────────────────────────────
   {
     'nvim-treesitter/nvim-treesitter',
+    -- pin to master: the default 'main' branch was restructured and no longer
+    -- ships lua/nvim-treesitter/configs.lua
+    branch = 'master',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
     opts = {

@@ -48,8 +48,32 @@ return {
         preselect = cmp.PreselectMode.None, -- nothing auto-selected
 
         window = {
-          completion = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered {
+            border = 'rounded',
+            winhighlight = 'Normal:NormalFloat,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None',
+          },
           documentation = false, -- no doc popup while typing (less bloat)
+        },
+
+        -- style each menu entry: kind icon + source tag
+        formatting = {
+          format = function(entry, vim_item)
+            local kind_icons = {
+              Text = '󰉿', Variable = '', Method = '󰆧', Function = '󰊕', Constructor = '',
+              Field = '', Property = '', Class = '', Interface = '', Module = '',
+              Unit = '', Value = '', Enum = '', Keyword = '', Snippet = '', Color = '',
+              File = '', Reference = '', Folder = '', EnumMember = '', Constant = '',
+              Struct = '', Event = '', Operator = '', TypeParameter = '',
+            }
+            vim_item.kind = ('%s %s'):format(kind_icons[vim_item.kind] or '', vim_item.kind)
+            vim_item.menu = ({
+              nvim_lsp = '[LSP]',
+              buffer = '[Buffer]',
+              path = '[Path]',
+              luasnip = '[Snippet]',
+            })[entry.source.name]
+            return vim_item
+          end,
         },
 
         mapping = cmp.mapping.preset.insert {

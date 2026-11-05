@@ -26,4 +26,4 @@ lua/
 
 Essential tools included: LSPs (via mason), async completion (nvim-cmp), telescope, treesitter, git integration.
 
-Run `:AsciiArt` for a random ASCII banner, and check the dashboard on startup.
+Startup opens straight into the editor — no dashboard. The bufferline at the top is a solid, always-visible bar.

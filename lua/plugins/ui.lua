@@ -1,33 +1,9 @@
 -- lua/plugins/ui.lua
--- Interface plugins: dashboard, bufferline, lualine,
+-- Interface plugins: bufferline (solid bar), lualine,
 -- which-key, indent guides, todo highlights, mini.nvim, neo-tree.
 
 return {
-  -- ── Dashboard (compact 'hyper' theme: no blank bars between items) ──
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      theme = 'hyper',
-      config = {
-        header = { 'NVIM' },
-        shortcut = {
-          { icon = '  ', desc = 'New file', key = 'e', action = 'enew' },
-          { icon = '  ', desc = 'Find file', key = 'f', action = 'Telescope find_files' },
-          { icon = '  ', desc = 'Recent files', key = 'r', action = 'Telescope oldfiles' },
-          { icon = '󰊢  ', desc = 'LazyGit', key = 'g', action = 'LazyGit' },
-          { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
-        },
-        packages = { enable = false },
-        project = { enable = false },
-        mru = { enable = false },
-        footer = { '⚡ kickstart.nvim — ready to code' },
-      },
-    },
-  },
-
-  -- ── Buffer tabs ────────────────────────────────────
+  -- ── Buffer tabs as a solid bar ─────────────────────
   {
     'akinsho/bufferline.nvim',
     version = '*',

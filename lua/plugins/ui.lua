@@ -3,23 +3,26 @@
 -- which-key, indent guides, todo highlights, mini.nvim, neo-tree.
 
 return {
-  -- ── Dashboard ──────────────────────────────────────
+  -- ── Dashboard (compact 'hyper' theme: no blank bars between items) ──
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
-      theme = 'doom',
+      theme = 'hyper',
       config = {
-        header = { '', '  NVIM  ', '' },
-          center = {
-            { icon = '  ', desc = 'New file', key = 'e', action = 'enew' },
-            { icon = '  ', desc = 'Find file', key = 'f', action = 'Telescope find_files' },
-            { icon = '  ', desc = 'Recent files', key = 'r', action = 'Telescope oldfiles' },
-            { icon = '󰊢  ', desc = 'LazyGit', key = 'g', action = 'LazyGit' },
-            { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
-          },
-          footer = { '', '⚡ kickstart.nvim — ready to code' },
+        header = { 'NVIM' },
+        shortcut = {
+          { icon = '  ', desc = 'New file', key = 'e', action = 'enew' },
+          { icon = '  ', desc = 'Find file', key = 'f', action = 'Telescope find_files' },
+          { icon = '  ', desc = 'Recent files', key = 'r', action = 'Telescope oldfiles' },
+          { icon = '󰊢  ', desc = 'LazyGit', key = 'g', action = 'LazyGit' },
+          { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
+        },
+        packages = { enable = false },
+        project = { enable = false },
+        mru = { enable = false },
+        footer = { '⚡ kickstart.nvim — ready to code' },
       },
     },
   },
@@ -32,9 +35,11 @@ return {
     opts = {
       options = {
         mode = 'buffers',
-        numbers = 'ordinal',
+        numbers = 'buffer_id',
+        separator_style = 'slope',
+        indicator = { style = 'underline' },
         diagnostics = 'nvim_lsp',
-        separator_style = 'slant',
+        hover = { enabled = true, reveal = { 'close' } },
         offsets = {
           { filetype = 'neo-tree', text = '  File Explorer', text_align = 'center' },
         },

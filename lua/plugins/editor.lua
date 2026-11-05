@@ -9,6 +9,9 @@ return {
     -- pin to master: the default 'main' branch was restructured and no longer
     -- ships lua/nvim-treesitter/configs.lua
     branch = 'master',
+    -- NOTE: queries/python/highlights.scm in this repo shadows the plugin's copy
+    -- (rtp order) to drop an invalid "except*" node that crashes highlighting
+    -- with parsers lacking that token.
     build = ':TSUpdate',
     config = function()
       -- fail-safe: never hard-crash startup if the clone is missing/stale
